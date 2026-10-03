@@ -43,28 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\thread.html" />
-    <EmbeddedResource Include="Resources\thread.css" />
-    <EmbeddedResource Include="Resources\thread.js" />
-    <EmbeddedResource Include="Resources\post.html" />
-    <EmbeddedResource Include="Resources\post.css" />
-    <EmbeddedResource Include="Resources\board-list.html" />
-    <EmbeddedResource Include="Resources\board-list.css" />
-    <EmbeddedResource Include="Resources\board-list.js" />
-    <EmbeddedResource Include="Resources\favorites.html" />
-    <EmbeddedResource Include="Resources\favorites.css" />
-    <EmbeddedResource Include="Resources\favorites.js" />
-    <EmbeddedResource Include="Resources\thread-list.html" />
-    <EmbeddedResource Include="Resources\thread-list.css" />
-    <EmbeddedResource Include="Resources\thread-list.js" />
-    <EmbeddedResource Include="Resources\viewer.html" />
-    <EmbeddedResource Include="Resources\viewer.css" />
-    <EmbeddedResource Include="Resources\viewer.js" />
-    <EmbeddedResource Include="Resources\viewer-details.html" />
-    <EmbeddedResource Include="Resources\viewer-details.css" />
-    <EmbeddedResource Include="Resources\viewer-details.js" />
-    <EmbeddedResource Include="Resources\shortcut-bridge.js" />
-    <EmbeddedResource Include="Resources\ai-chat.html" />
+    <ProjectReference Include="..\ChBrowser.Core\ChBrowser.Core.csproj" />
   </ItemGroup>
 
 </Project>

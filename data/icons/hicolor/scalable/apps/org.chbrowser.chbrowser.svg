@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <!-- Base Plate Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3584e4"/>
+      <stop offset="100%" stop-color="#1c71d8"/>
+    </linearGradient>
+    <linearGradient id="bubbleGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f6f6f6"/>
+    </linearGradient>
+    <linearGradient id="bubbleGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#62a0ea"/>
+      <stop offset="100%" stop-color="#3584e4"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.25"/>
+    </filter>
+    <filter id="innerShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Base App Icon Tile (GNOME HIG Style) -->
+  <rect x="12" y="14" width="104" height="104" rx="24" ry="24" fill="#1a5fb4"/>
+  <rect x="12" y="10" width="104" height="104" rx="24" ry="24" fill="url(#bgGrad)" filter="url(#shadow)"/>
+  
+  <!-- Subtle Header Highlight -->
+  <path d="M 36 10 L 92 10 A 24 24 0 0 1 116 34 L 116 38 A 24 24 0 0 0 92 14 L 36 14 A 24 24 0 0 0 12 38 L 12 34 A 24 24 0 0 1 36 10 Z" fill="#ffffff" opacity="0.2"/>
+
+  <!-- Left: Multi-pane side bar representation -->
+  <rect x="22" y="24" width="22" height="76" rx="6" ry="6" fill="#1a5fb4" opacity="0.35"/>
+  <rect x="26" y="32" width="14" height="4" rx="2" ry="2" fill="#ffffff" opacity="0.8"/>
+  <rect x="26" y="42" width="14" height="4" rx="2" ry="2" fill="#ffffff" opacity="0.5"/>
+  <rect x="26" y="52" width="14" height="4" rx="2" ry="2" fill="#ffffff" opacity="0.5"/>
+  <rect x="26" y="62" width="14" height="4" rx="2" ry="2" fill="#ffffff" opacity="0.5"/>
+  <rect x="26" y="72" width="14" height="4" rx="2" ry="2" fill="#ffffff" opacity="0.5"/>
+  <rect x="26" y="82" width="14" height="4" rx="2" ry="2" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Center/Right: Thread / Chat Bubble 1 (Background/Reply) -->
+  <g filter="url(#innerShadow)">
+    <path d="M 54 50 L 98 50 C 102.4 50 106 53.6 106 58 L 106 82 C 106 86.4 102.4 90 98 90 L 86 90 L 80 97 L 78 90 L 54 90 C 49.6 90 46 86.4 46 82 L 46 58 C 46 53.6 49.6 50 54 50 Z" fill="#15539e" opacity="0.3"/>
+    <path d="M 54 48 L 98 48 C 102.4 48 106 51.6 106 56 L 106 80 C 106 84.4 102.4 88 98 88 L 86 88 L 80 95 L 78 88 L 54 88 C 49.6 88 46 84.4 46 80 L 46 56 C 46 51.6 49.6 48 54 48 Z" fill="url(#bubbleGrad2)"/>
+    <!-- Reply Bubble content lines -->
+    <rect x="54" y="58" width="44" height="4" rx="2" ry="2" fill="#ffffff" opacity="0.9"/>
+    <rect x="54" y="68" width="32" height="4" rx="2" ry="2" fill="#ffffff" opacity="0.75"/>
+  </g>
+
+  <!-- Foreground: Primary BBS Thread Message Bubble -->
+  <g filter="url(#shadow)">
+    <path d="M 48 24 L 92 24 C 96.4 24 100 27.6 100 32 L 100 56 C 100 60.4 96.4 64 92 64 L 62 64 L 56 71 L 54 64 L 48 64 C 43.6 64 40 60.4 40 56 L 40 32 C 40 27.6 43.6 24 48 24 Z" fill="url(#bubbleGrad1)"/>
+    <!-- Thread Title and Content representation -->
+    <rect x="48" y="32" width="28" height="5" rx="2.5" ry="2.5" fill="#1c71d8"/>
+    <circle cx="86" cy="34.5" r="2.5" fill="#e01b24"/>
+    <rect x="48" y="42" width="44" height="3" rx="1.5" ry="1.5" fill="#77767b"/>
+    <rect x="48" y="49" width="36" height="3" rx="1.5" ry="1.5" fill="#9a9996"/>
+  </g>
+</svg>

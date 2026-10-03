@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>ChBrowser.Gtk</RootNamespace>
+    <AssemblyName>ChBrowser.Gtk</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChBrowser.Core\ChBrowser.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GirCore.Gtk-4.0" Version="0.8.1" />
+    <PackageReference Include="GirCore.WebKit-6.0" Version="0.8.1" />
+    <PackageReference Include="GirCore.Adw-1" Version="0.8.1" />
+  </ItemGroup>
+
+</Project>

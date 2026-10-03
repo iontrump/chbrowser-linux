@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using ChBrowser.Models;
+using ChBrowser.Services.Render;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ChBrowser.ViewModels;
@@ -7,12 +9,14 @@ namespace ChBrowser.ViewModels;
 /// <summary>板一覧 TreeView の親ノード (カテゴリ) に対応する ViewModel。
 /// Phase 14 で WebView2 化したあとも、HTML を再生成するときに <c>&lt;details open&gt;</c> を
 /// 出し分けるために <see cref="IsExpanded"/> を保持する。</summary>
-public sealed partial class BoardCategoryViewModel : ObservableObject
+public sealed partial class BoardCategoryViewModel : ObservableObject, IBoardCategoryTreeItem
 {
     public string CategoryName { get; }
     /// <summary>所属する掲示板提供者の Id (板一覧ペインのトップノード分け、開閉状態の同定に使う)。</summary>
     public string ProviderId { get; }
     public IReadOnlyList<BoardViewModel> Boards { get; }
+
+    IEnumerable<Board> IBoardCategoryTreeItem.Boards => Boards.Select(b => b.Board);
 
     /// <summary>初期は閉じた状態 (= bbsmenu のカテゴリ数が 50+ になりうるので折りたたんでおいた方が見やすい)。
     /// JS から setCategoryExpanded メッセージで更新される。</summary>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using ChBrowser.Models;
+using ChBrowser.Services.Render;
 using ChBrowser.Services.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -378,7 +379,7 @@ public sealed class FavoritesViewModel : ObservableObject
 
 /// <summary>お気に入りエントリの ViewModel 基底。
 /// HierarchicalDataTemplate で派生型を判別して描画するため、各派生型は独自プロパティを持つ。</summary>
-public abstract class FavoriteEntryViewModel : ObservableObject
+public abstract class FavoriteEntryViewModel : ObservableObject, IFavoriteTreeItem
 {
     /// <summary>UI 上の表示名 (フォルダ名 / 板名 / スレタイトル)。</summary>
     public abstract string DisplayName { get; }
@@ -390,6 +391,10 @@ public abstract class FavoriteEntryViewModel : ObservableObject
     /// <summary>親フォルダ。ルート直下なら null。
     /// 削除/移動操作で親をたどるために使う (FavoritesViewModel.SiblingsOf)。</summary>
     public FavoriteFolderViewModel? Parent { get; internal set; }
+
+    bool IFavoriteTreeItem.IsExpanded => (this as FavoriteFolderViewModel)?.IsExpanded ?? false;
+    IReadOnlyList<IFavoriteTreeItem> IFavoriteTreeItem.Children =>
+        (this as FavoriteFolderViewModel)?.Children ?? (IReadOnlyList<IFavoriteTreeItem>)Array.Empty<IFavoriteTreeItem>();
 
     protected FavoriteEntryViewModel(FavoriteEntry model)
     {

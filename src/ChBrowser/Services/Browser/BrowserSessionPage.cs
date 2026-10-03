@@ -9,14 +9,6 @@ using WpfWebView2 = Microsoft.Web.WebView2.Wpf.WebView2;
 
 namespace ChBrowser.Services.Browser;
 
-/// <summary>掲示板のページの中で JS を実行する口 (<see cref="BrowserSessionPage"/>)。掲示板のページが自分で送る要求
-/// (ふたばの そうだね 等) を、同じページ・同じ Cookie から送るのに使う。</summary>
-public interface IBrowserPageRunner
-{
-    /// <summary><paramref name="pageUrl"/> を開いて (既に開いていればそのまま)、<paramref name="script"/> を実行し、その戻り値 (文字列) を返す。
-    /// スクリプトは同期的に文字列を返す式にすること (<c>ExecuteScriptAsync</c> は Promise を待てない)。</summary>
-    Task<string> RunAsync(string pageUrl, string script, CancellationToken ct);
-}
 
 /// <summary>掲示板ごとのブラウザセッション (<see cref="BrowserProfiles"/>) で、画面外の小窓に WebView2 を 1 つ常駐させ、
 /// そのページの中で JS を実行する (<c>doc/multi-bbs-design.md</c> §8.8.6)。WebView2 は UI スレッド専用なので呼び出しは

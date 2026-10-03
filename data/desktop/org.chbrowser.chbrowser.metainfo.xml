@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.chbrowser.chbrowser</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>ChBrowser</name>
+  <summary>Multi-pane BBS browser for Linux</summary>
+  <description>
+    <p>
+      ChBrowser is a fast, keyboard-friendly multi-pane BBS browser built for GNOME and Linux desktops using GTK4, libadwaita, and WebKitGTK 6.0.
+    </p>
+    <p>Features include:</p>
+    <ul>
+      <li>4-pane layout: Favorites, Board List, Thread List, and Thread View</li>
+      <li>Full support for 5ch and eddiner BBS providers</li>
+      <li>Posting and local authentication verification</li>
+      <li>GNOME HIG compliance with dark mode and native dialogs</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">org.chbrowser.chbrowser.desktop</launchable>
+  <developer id="org.chbrowser">
+    <name>ChBrowser Developers</name>
+  </developer>
+  <url type="homepage">https://github.com/chbrowser/chbrowser</url>
+  <provides>
+    <binary>chbrowser</binary>
+  </provides>
+  <releases>
+    <release version="1.0.0" date="2026-10-01">
+      <description>
+        <p>Initial Linux GTK4 / libadwaita release.</p>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1" />
+</component>

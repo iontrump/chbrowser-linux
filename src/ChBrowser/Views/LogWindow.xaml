@@ -1,7 +1,7 @@
 <Window x:Class="ChBrowser.Views.LogWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:logging="clr-namespace:ChBrowser.Services.Logging"
+        xmlns:logging="clr-namespace:ChBrowser.Services.Logging;assembly=ChBrowser.Core"
         Title="ChBrowser ログ"
         Width="640" Height="400"
         MinWidth="320" MinHeight="200"

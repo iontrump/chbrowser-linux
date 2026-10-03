@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
+using ChBrowser.Models;
 using ChBrowser.ViewModels;
 
 namespace ChBrowser.Converters;

@@ -1,0 +1,24 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+
+# Install GTK4, Libadwaita, WebKitGTK 6.0, fonts and X11 test utilities
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgtk-4-1 \
+    libgtk-4-dev \
+    libadwaita-1-0 \
+    libadwaita-1-dev \
+    libwebkitgtk-6.0-4 \
+    libwebkitgtk-6.0-dev \
+    fonts-noto-color-emoji \
+    fonts-noto-cjk \
+    fonts-noto-cjk-extra \
+    fonts-ipafont-gothic \
+    xvfb \
+    dbus-x11 \
+    fcitx5-frontend-gtk4 \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS=1
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+WORKDIR /work

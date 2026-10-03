@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ChBrowser
+GenericName=BBS Browser
+Comment=Multi-pane BBS browser for Linux (5ch, eddi, and compatible boards)
+Exec=chbrowser %u
+Icon=org.chbrowser.chbrowser
+Terminal=false
+Categories=Network;News;
+MimeType=x-scheme-handler/chbrowser;
+StartupWMClass=org.chbrowser.chbrowser.gtk
+Keywords=5ch;eddi;bbs;browser;viewer;

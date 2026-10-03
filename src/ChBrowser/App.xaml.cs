@@ -11,6 +11,7 @@ using ChBrowser.Services.Api;
 using ChBrowser.Services.Donguri;
 using ChBrowser.Services.Image;
 using ChBrowser.Services.Llm;
+using ChBrowser.Services.Logging;
 using ChBrowser.Services.Storage;
 using ChBrowser.Services.Theme;
 using ChBrowser.ViewModels;
@@ -127,6 +128,53 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+
+        // Core の LogService から UI スレッドへ安全にディスパッチするハンドラを登録
+        LogService.DispatcherInvoker = action =>
+        {
+            var app = Current;
+            if (app is { Dispatcher: { } d } && !d.CheckAccess())
+                d.BeginInvoke(action);
+            else
+                action();
+        };
+
+        // Core の AiImageMetadataService からステルス PNG ピクセルをデコードするハンドラを登録 (WPF)
+        AiImageMetadataService.PngBgra32PixelReader = data =>
+        {
+            try
+            {
+                using var ms = new System.IO.MemoryStream(data, writable: false);
+                var decoder = new System.Windows.Media.Imaging.PngBitmapDecoder(
+                    ms,
+                    System.Windows.Media.Imaging.BitmapCreateOptions.PreservePixelFormat,
+                    System.Windows.Media.Imaging.BitmapCacheOption.OnLoad);
+                if (decoder.Frames.Count == 0) return null;
+                System.Windows.Media.Imaging.BitmapSource src = decoder.Frames[0];
+
+                if (src.Format != System.Windows.Media.PixelFormats.Bgra32 &&
+                    src.Format != System.Windows.Media.PixelFormats.Pbgra32)
+                {
+                    src = new System.Windows.Media.Imaging.FormatConvertedBitmap(
+                        src,
+                        System.Windows.Media.PixelFormats.Bgra32,
+                        null,
+                        0);
+                }
+
+                int width = src.PixelWidth;
+                int height = src.PixelHeight;
+                int stride = width * 4;
+                var pixels = new byte[(long)height * stride];
+                src.CopyPixels(pixels, stride, 0);
+                return (pixels, width, height);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[AiImageMeta] stealth decode failed: {ex.Message}");
+                return null;
+            }
+        };
 
         // .NET Core 系では Shift_JIS が組み込みで使えないため CodePages プロバイダを登録
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);

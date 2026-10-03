@@ -1,5 +1,4 @@
 # --- Build outputs ---
-/doc/**
 bin/
 obj/
 [Bb]uild/
@@ -8,8 +7,24 @@ obj/
 [Rr]elease/
 out/
 publish/
+.build-local/
+dist/
 
-# --- Visual Studio / VS Code ---
+# --- 機密情報・個人データ (コミット厳禁) ---
+認証トークン.txt
+*.token
+*.cookie
+*.pfx
+*.key
+
+# --- 一時作業用ディレクトリ・仮想環境・内部ドキュメント ---
+.backup_gtk/
+.venv/
+.gemini/
+.claude/
+docs/
+
+# --- Visual Studio / VS Code / Rider ---
 .vs/
 .vscode/
 *.user
@@ -20,8 +35,6 @@ publish/
 *.lock.json
 *.csproj.Backup.tmp
 *.Backup.tmp
-
-# --- ReSharper / Rider ---
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
@@ -49,14 +62,19 @@ TestResults/
 [Dd]esktop.ini
 
 # --- WebView2 user data folder ---
-# 各 exe 横に "<exe>.WebView2/" として作られる Edge プロファイル一式
 *.WebView2/
 
-# --- ChBrowser ランタイムデータ ---
-# bin/ 配下に展開される `data/` フォルダはユーザのキャッシュ・設定・dat 等を含む。
-# bin/ 自体を ignore しているので大半はこれでカバーされるが、念のため明示。
-data/
+# --- ChBrowser ランタイムデータ (実行時キャッシュ・ログ) ---
 src/ChBrowser/data/
+data/cache/
+data/logs/
+data/*.dat
+
+# data/ 直下のデスクトップ統合ファイルは Git で追跡する
+!data/desktop/
+!data/desktop/**
+!data/icons/
+!data/icons/**
 
 # --- 設計書 / ドキュメント関連の編集中ファイル ---
 ~$*
@@ -64,16 +82,9 @@ src/ChBrowser/data/
 # --- macOS / その他 ---
 .DS_Store
 
-# --- Claude Code の作業ファイル (任意で commit したくない場合) ---
-# .claude/ はプロジェクト固有の Claude Code 状態が入る。チームで共有しない場合は ignore 推奨。
-.claude/
-
-# --- 開発時補助スクリプト ---
-# 例: tools/make-icon.ps1 (= app.ico を生成し直す PowerShell スクリプト)。
-# 配布バイナリには関係しないので track しない。必要なら git history から取り出せる。
-tools/
+# --- ローカル掲示板サーバー ---
+local/eddiner/
+data-eddiner-local/
 
 # --- アイコン生成のプレビュー PNG ---
-# tools/make-icon.ps1 が app.ico と並べて出力する各サイズの PNG。配布物には含めない。
-# app.ico (= 実際にビルドが参照する) は引き続き track する。
 src/ChBrowser/Resources/icon/preview_*.png
