@@ -82,9 +82,13 @@ data/*.dat
 # --- macOS / その他 ---
 .DS_Store
 
-# --- ローカル掲示板サーバー ---
+# --- ローカル掲示板サーバー (内部開発用) ---
 local/eddiner/
 data-eddiner-local/
+tools/run-local-server.sh
+tools/setup-local-server.sh
+tools/test-eddiner-integration.sh
+tools/test-post-local.sh
 
 # --- アイコン生成のプレビュー PNG ---
 src/ChBrowser/Resources/icon/preview_*.png
