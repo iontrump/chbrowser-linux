@@ -92,3 +92,7 @@ tools/test-post-local.sh
 
 # --- アイコン生成のプレビュー PNG ---
 src/ChBrowser/Resources/icon/preview_*.png
+
+# --- 調査用バッチ・サンプル画像 ---
+ChBrowser-debug起動_調査用.bat
+img/sample*.png
