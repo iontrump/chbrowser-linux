@@ -61,9 +61,15 @@ Windows 向け BBS ブラウザ [pawapawa041950/chbrowser](https://github.com/pa
 - **デスクトップ環境**: GNOME、Wayland、X11 に対応
 - **依存パッケージ** (Ubuntu / Debian の場合):
   ```bash
+  # GUI 共有ライブラリおよび日本語入力モジュール
   sudo apt install -y libgtk-4-1 libadwaita-1-0 libwebkitgtk-6.0-4 fcitx5-frontend-gtk4
+
+  # .NET 8 SDK（ソースコードから直接ビルド・起動する場合に必要）
+  sudo apt install -y dotnet-sdk-8.0
   ```
-- **ランタイム**: [.NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)（自己完結型バイナリの場合はインストール不要）
+- **ランタイムについて**:
+  - ソースコードから直接起動（`./tools/run-local.sh` 等）やビルド・発行を行う場合は **[.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)** が必要です。
+  - 自己完結型単一バイナリ（`ChBrowser.Gtk`）や `.deb` パッケージから実行する場合は、ランタイムが内包されているため **dotnet のインストールは不要** です。
 
 ---
 
