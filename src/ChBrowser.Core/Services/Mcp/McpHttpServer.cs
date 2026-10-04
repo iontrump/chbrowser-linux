@@ -38,7 +38,7 @@ public sealed class McpHttpServer : IDisposable
     private Task?                    _acceptLoop;
 
     private static readonly string ServerVersion =
-        Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.1.0";
+        Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0.0";
 
     /// <summary>サーバが現在 listen しているか。</summary>
     public bool IsRunning => _listener is not null;

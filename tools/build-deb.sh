@@ -8,7 +8,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-VERSION="${1:-0.1.0}"
+VERSION="${1:-1.0}"
 APP_ID="org.chbrowser.chbrowser"
 
 # Detect architecture
@@ -95,7 +95,7 @@ Installed-Size: ${INSTALLED_SIZE}
 Maintainer: ChBrowser Developers <https://github.com/pawapawa041950/chbrowser>
 Depends: libc6, libgtk-4-1, libadwaita-1-0, libwebkitgtk-6.0-4
 Recommends: fcitx5-frontend-gtk4 | ibus-gtk4
-Homepage: https://github.com/pawapawa041950/chbrowser
+Homepage: https://github.com/iontrump/chbrowser-linux
 Description: Modern 4-pane BBS browser for Linux (GNOME/GTK4)
  ChBrowser is a fast, responsive 4-pane BBS browser for 5ch, BBSPINK,
  open2ch, Eddi, and Machi BBS, built with C# (.NET 8) and GTK4/WebKitGTK.

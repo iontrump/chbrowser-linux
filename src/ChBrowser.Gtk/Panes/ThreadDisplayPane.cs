@@ -214,7 +214,7 @@ public sealed class ThreadDisplayPane
                 settings.AllowFileAccessFromFileUrls = true;
                 settings.MediaPlaybackAllowsInline = true;
                 settings.MediaPlaybackRequiresUserGesture = false;
-                settings.UserAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15 ChBrowser/0.1";
+                settings.UserAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15 ChBrowser/1.0";
             }
 
             Container.Append(WebView);
@@ -423,7 +423,7 @@ public sealed class ThreadDisplayPane
             try
             {
                 using var request = new HttpRequestMessage(HttpMethod.Get, actualUrl);
-                request.Headers.UserAgent.ParseAdd("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15 ChBrowser/0.1");
+                request.Headers.UserAgent.ParseAdd("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15 ChBrowser/1.0");
 
                 using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)

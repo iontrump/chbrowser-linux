@@ -21,12 +21,12 @@
   <developer id="org.chbrowser">
     <name>ChBrowser Developers</name>
   </developer>
-  <url type="homepage">https://github.com/chbrowser/chbrowser</url>
+  <url type="homepage">https://github.com/iontrump/chbrowser-linux</url>
   <provides>
     <binary>chbrowser</binary>
   </provides>
   <releases>
-    <release version="1.0.0" date="2026-10-01">
+    <release version="1.0" date="2026-10-04">
       <description>
         <p>Initial Linux GTK4 / libadwaita release.</p>
       </description>

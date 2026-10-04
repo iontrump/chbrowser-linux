@@ -509,12 +509,11 @@ public sealed class MainWindow
         about.SetTransientFor(_window);
         about.SetApplicationName("ChBrowser");
         about.SetApplicationIcon("org.chbrowser.chbrowser");
-        about.SetVersion("1.0.0");
+        about.SetVersion("1.0");
         about.SetDeveloperName("ChBrowser Developers");
         about.SetLicenseType(Gtk.License.MitX11);
         about.SetComments("Linux (GNOME / GTK4 / libadwaita / WebKitGTK 6.0) 向けマルチペイン BBS ブラウザ");
-        about.SetWebsite("https://github.com/chbrowser/chbrowser");
-        about.SetIssueUrl("https://github.com/chbrowser/chbrowser/issues");
+        about.SetWebsite("https://github.com/iontrump/chbrowser-linux");
         about.Present();
         return about;
     }

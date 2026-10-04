@@ -75,7 +75,31 @@ Windows 向け BBS ブラウザ [pawapawa041950/chbrowser](https://github.com/pa
 
 ## 起動・インストール方法
 
-### 1. ホスト環境で直接起動（推奨）
+### 1. Debian パッケージ（.deb）の作成とインストール
+
+Ubuntu や Debian 向けの `.deb` インストーラーパッケージを作成する場合:
+
+```bash
+# .deb パッケージの生成 (出力: dist/chbrowser_<version>_<arch>.deb)
+./tools/build-deb.sh
+
+# パッケージのインストール
+sudo apt install ./dist/chbrowser_1.0_*.deb
+
+# アンインストールする場合
+sudo apt remove chbrowser
+
+# 更新インストールする場合（設定やログは保持されます）
+sudo apt install ./dist/chbrowser_1.0_*.deb
+# ※同一バージョンを再インストールする場合は --reinstall を指定
+# sudo apt install --reinstall ./dist/chbrowser_1.0_*.deb
+```
+
+> [!NOTE]
+> **インストール時の通知について**:  
+> `sudo apt install` 実行時に「`ユーザ '_apt' からアクセスできないため、ダウンロードは root でサンドボックスを通さずに行われます`」という通知（Notice）が表示される場合がありますが、これはホームディレクトリ配下のローカルファイルを読み込む際の apt の標準的な挙動であり、インストール自体は正常に完了しています。
+
+### 2. ホスト環境で直接起動
 
 リポジトリ内のスクリプトを使用すると、ホスト環境でビルドして即座に起動できます（fcitx5 / ibus による日本語入力もそのまま動作します）:
 
@@ -83,7 +107,7 @@ Windows 向け BBS ブラウザ [pawapawa041950/chbrowser](https://github.com/pa
 ./tools/run-local.sh
 ```
 
-### 2. デスクトップ統合インストール
+### 3. デスクトップ統合インストール
 
 デスクトップランチャー（アプリケーション一覧）に登録し、アイコン付きで日常的に起動できるようにします:
 
@@ -102,7 +126,7 @@ sudo ./tools/install-desktop.sh --system
 ./tools/install-desktop.sh --uninstall
 ```
 
-### 3. ソースコードからの単一バイナリ発行（Publish）
+### 4. ソースコードからの単一バイナリ発行（Publish）
 
 配布用または単独実行用の自己完結型バイナリ（Self-contained Single File）を作成する場合（アーキテクチャに応じて `-r linux-x64` または `-r linux-arm64` を指定）:
 
@@ -123,25 +147,6 @@ dotnet publish src/ChBrowser.Gtk/ChBrowser.Gtk.csproj \
 ```
 
 出力先: `src/ChBrowser.Gtk/bin/Release/net8.0/<RID>/publish/ChBrowser.Gtk`
-
-### 4. Debian パッケージ（.deb）の作成とインストール
-
-Ubuntu や Debian 向けの `.deb` インストーラーパッケージを作成する場合:
-
-```bash
-# .deb パッケージの生成 (出力: dist/chbrowser_<version>_<arch>.deb)
-./tools/build-deb.sh
-
-# パッケージのインストール
-sudo apt install ./dist/chbrowser_0.1.0_*.deb
-
-# アンインストールする場合
-sudo apt remove chbrowser
-```
-
-> [!NOTE]
-> **インストール時の通知について**:  
-> `sudo apt install` 実行時に「`ユーザ '_apt' からアクセスできないため、ダウンロードは root でサンドボックスを通さずに行われます`」という通知（Notice）が表示される場合がありますが、これはホームディレクトリ配下のローカルファイルを読み込む際の apt の標準的な挙動であり、インストール自体は正常に完了しています。
 
 ### 5. 包括自動検証テストの実行
 
@@ -213,7 +218,6 @@ chbrowser-linux/
 ## 免責事項
 
 - 本ソフトウェアは各掲示板（5ch.io, bbspink.com, eddibb.cc, machi.to, open2ch.net）の仕様に依存します。各掲示板サーバ側の仕様変更により動作しなくなる可能性があります。
-- 本ソフトウェアは各掲示板（5ch.io, eddibb.cc, machi.to, open2ch.net）の仕様に依存します。各掲示板サーバ側の仕様変更により動作しなくなる可能性があります。
 - 本ソフトウェアは非公式クライアントであり、各掲示板の運営元とは一切関係ありません。
 - ご利用は自己責任でお願いいたします。
 
@@ -223,3 +227,4 @@ chbrowser-linux/
 
 - **ライセンス**: 本プロジェクトは [MIT License](LICENSE) の下で公開されています。
 - **オリジナルプロジェクト**: 本プロジェクトは [pawapawa041950/chbrowser](https://github.com/pawapawa041950/chbrowser/) をベースに Linux / GTK4 向けに移植・開発されたものです。優れたコア設計とリソースを提供してくださったオリジナル作者様に深く感謝いたします。
+- **AI 支援**: 本アプリケーションのコード作成には Gemini (Gemini 3.8 Flash High) が用いられています。
